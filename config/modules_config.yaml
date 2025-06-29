@@ -1,0 +1,38 @@
+# Module-specific configuration
+
+example:
+  enabled: true
+  config:
+    max_ping_count: 10
+    timeout_seconds: 30
+  dependencies: []
+
+nuclei:
+  enabled: true
+  config:
+    severity_levels: ["info", "low", "medium", "high", "critical"]
+    default_severity: "medium"
+    templates_path: null
+    rate_limit: 10
+    timeout: 300
+  dependencies:
+    - nuclei
+
+shodan:
+  enabled: true
+  config:
+    max_results: 100
+    default_limit: 10
+    cache_ttl: 3600
+    rate_limit: 5
+  dependencies:
+    - shodan
+  
+leakcheck:
+  enabled: true
+  config:
+    max_results: 50
+    rate_limit: 5
+    timeout: 30
+  dependencies:
+    - requests
